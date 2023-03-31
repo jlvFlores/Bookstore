@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family:
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    'Courier New',
+    monospace;
+}
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+}
+
+header,
+nav,
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  padding: 0 0.75rem;
+}
+
+ul {
+  list-style-type: none;
+  gap: 2rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.profile {
+  width: 35px;
+}
+
+.books {
+  max-height: 70vh;
+  overflow-y: scroll;
+  background: #1f2329;
+  padding: 0 1rem;
+}
+
+.book-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #282c34;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+.book-info {
+  max-width: 50%;
+}
+
+.book-completion {
+  display: flex;
+  width: 50%;
+}
+
+.percentage,
+.chapter {
+  width: 50%;
+}
+
+span {
+  color: #ff6262;
+}
+
+form {
+  padding: 0 1rem;
+}
+
+.add-book-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #282c34;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
