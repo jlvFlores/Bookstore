@@ -12,6 +12,7 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       state.books = [...state.books, {
+        id: Math.floor(Math.random() * 100),
         title: action.payload.title,
         author: action.payload.author,
         genre: action.payload.genre,
@@ -21,7 +22,7 @@ const booksSlice = createSlice({
     },
     removeBook: (state, action) => {
       const bookId = action.payload;
-      initialState.books = state.books.filter((book) => book.id !== bookId);
+      state.books = state.books.filter((book) => book.id !== bookId);
     },
   },
 });
