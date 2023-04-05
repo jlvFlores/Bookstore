@@ -1,29 +1,29 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addBook } from '../redux/books/booksSlice';
 
-const InputBook = ({ addBook }) => {
+const InputBook = () => {
+  const dispatch = useDispatch();
+
   const [message, setMessage] = useState('');
   const [bookInfo, setbookInfo] = useState({
     title: '',
     author: '',
-    genre: '',
+    category: 'Fiction',
   });
 
-  const titleInput = document.querySelector('[name="title"]');
-  const authorInput = document.querySelector('[name="author"]');
-  const genreInput = document.querySelector('[name="genre"]');
-  const handleChange = () => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setbookInfo({
-      title: titleInput.value,
-      author: authorInput.value,
-      genre: genreInput.value,
+      ...bookInfo,
+      [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (bookInfo.title !== '' && bookInfo.author !== '') {
-      addBook(bookInfo.title, bookInfo.author, bookInfo.genre);
+      dispatch(addBook(bookInfo));
       setbookInfo({
         title: '',
         author: '',
@@ -42,21 +42,16 @@ const InputBook = ({ addBook }) => {
         <div className="add-book-form">
           <input name="title" type="text" placeholder="Book title" value={bookInfo.title} onChange={handleChange} />
           <input name="author" type="text" placeholder="Book author" value={bookInfo.author} onChange={handleChange} />
-          <select name="genre" value={bookInfo.genre} onChange={handleChange}>
-            <option value="Action">Action</option>
+          <select name="category" value={bookInfo.category} onChange={handleChange}>
+            <option value="Fiction">Fiction</option>
+            <option value="Nonfiction">Nonfiction</option>
             <option value="Science Fiction">Science Fiction</option>
-            <option value="Economy">Economy</option>
-            <option value="Adventure">Adventure</option>
           </select>
           <button type="submit">ADD BOOK</button>
         </div>
       </form>
     </>
   );
-};
-
-InputBook.propTypes = {
-  addBook: PropTypes.func.isRequired,
 };
 
 export default InputBook;
