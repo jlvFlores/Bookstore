@@ -95,6 +95,13 @@ form {
   justify-content: space-between;
 }
 
+.book-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
 ::-webkit-scrollbar {
   width: 0.5rem;
 }
