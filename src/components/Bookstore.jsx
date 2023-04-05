@@ -1,43 +1,9 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Book from './Book';
 import InputBook from './InputBook';
 
 const Bookstore = () => {
-  const [books, setBooks] = useState([
-    {
-      title: 'The Hunger Games',
-      author: 'Suzanne Collins',
-      genre: 'Action',
-      percentage: 64,
-      chapter: 'Chapter 17',
-    },
-    {
-      title: 'Dune',
-      author: 'Frank Herbert',
-      genre: 'Science Fiction',
-      percentage: 8,
-      chapter: 'Chapter 3: "A Lesson Learned"',
-    },
-    {
-      title: 'Capital in the Twenty-First Century',
-      author: 'Suzanne Collins',
-      genre: 'Economy',
-      percentage: 0,
-      chapter: 'Introduction',
-    },
-  ]);
-
-  const addBook = (title, author, genre) => {
-    const newBook = {
-      title,
-      author,
-      genre,
-      percentage: 0,
-      chapter: 'Not opened yet',
-    };
-    setBooks([...books, newBook]);
-  };
-
+  const { books } = useSelector((store) => store.books);
   return (
     <>
       <header>
@@ -53,18 +19,16 @@ const Bookstore = () => {
       <section className="books">
         {books.map((book) => (
           <Book
-            key={book.title}
+            key={book.item_id}
+            id={book.item_id}
             title={book.title}
             author={book.author}
-            genre={book.genre}
-            percentage={book.percentage}
-            chapter={book.chapter}
-            update={setBooks}
+            category={book.category}
           />
         ))}
       </section>
       <section>
-        <InputBook addBook={addBook} />
+        <InputBook />
       </section>
     </>
   );
