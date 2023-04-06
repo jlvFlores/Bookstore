@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { addBook, addBookRequest } from '../redux/books/booksSlice';
 
 const InputBook = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const InputBook = () => {
     e.preventDefault();
     if (bookInfo.title !== '' && bookInfo.author !== '') {
       dispatch(addBook(bookInfo));
+      dispatch(addBookRequest());
       setbookInfo({
         title: '',
         author: '',
