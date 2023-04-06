@@ -71,27 +71,54 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:  A web browser
+In order to run this project you need: 
+
+```
+Visual Studio Code
+Node.js
+```
 
 ### Setup
 
-Clone this [repository](https://github.com/jlvFlores/Bookstore) to your desired folder
+Clone this repository to your desired folder
+
+```
+cd your-folder
+https://github.com/jlvFlores/Bookstore
+cd Bookstore
+```
 
 ### Install
 
-Install all dependencies to this project with: `npm install`
+Install all dependencies to this project with:
+
+```
+npm install
+```
 
 ### Usage
 
-To run the project, execute the following command:  `npm run dev`
+To run the project, execute the following command:  
+
+```
+npm start
+```
 
 ### Run tests
 
-To run tests, run the following command: `npm run dev`
+To run tests, run the following command: 
+
+```
+npm test
+```
 
 ### Deployment
 
 You can use any deployment service to deploy the application.
+
+```
+npm run build
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

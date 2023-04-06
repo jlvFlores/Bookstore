@@ -37,9 +37,9 @@ const InputBook = () => {
 
   return (
     <>
-      <span>{message}</span>
+      <span className="form-message">{message}</span>
       <form onSubmit={handleSubmit}>
-        <h3>ADD NEW BOOK</h3>
+        <h3 className="input-title">ADD NEW BOOK</h3>
         <div className="add-book-form">
           <input name="title" type="text" placeholder="Book title" value={bookInfo.title} onChange={handleChange} />
           <input name="author" type="text" placeholder="Book author" value={bookInfo.author} onChange={handleChange} />
@@ -47,8 +47,9 @@ const InputBook = () => {
             <option value="Fiction">Fiction</option>
             <option value="Nonfiction">Nonfiction</option>
             <option value="Science Fiction">Science Fiction</option>
+            <option value="Horror Fiction">Horror Fiction</option>
           </select>
-          <button type="submit">ADD BOOK</button>
+          <button type="submit" className="blue-btn">ADD BOOK</button>
         </div>
       </form>
     </>
