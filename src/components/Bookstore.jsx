@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Book from './Book';
 import InputBook from './InputBook';
-import { getBooksRequest } from '../redux/request';
+import { getBooksRequest } from '../redux/books/booksSlice';
 
 const Bookstore = () => {
   const dispatch = useDispatch();
