@@ -1,9 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Book from './Book';
 import InputBook from './InputBook';
+import { getBooksRequest } from '../redux/request';
 
 const Bookstore = () => {
+  const dispatch = useDispatch();
   const { books } = useSelector((store) => store.books);
+
+  useEffect(() => {
+    dispatch(getBooksRequest());
+  }, [dispatch]);
+
   return (
     <>
       <header>
@@ -19,8 +27,8 @@ const Bookstore = () => {
       <section className="books">
         {books.map((book) => (
           <Book
-            key={book.item_id}
-            id={book.item_id}
+            key={book.id}
+            id={book.id}
             title={book.title}
             author={book.author}
             category={book.category}

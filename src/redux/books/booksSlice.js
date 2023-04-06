@@ -1,27 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice } from '@reduxjs/toolkit';
+import { getBooksRequest } from '../request';
 
 const initialState = {
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
+  error: null,
 };
 
 const booksSlice = createSlice({
@@ -30,7 +13,7 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       const newBook = {
-        item_id: uuidv4(),
+        id: uuidv4(),
         title: action.payload.title,
         author: action.payload.author,
         category: action.payload.category,
@@ -39,11 +22,27 @@ const booksSlice = createSlice({
     },
     removeBook: (state, action) => {
       const bookId = action.payload;
-      return { ...state, books: state.books.filter((book) => book.item_id !== bookId) };
+      return { ...state, books: state.books.filter((book) => book.id !== bookId) };
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(getBooksRequest.fulfilled, (state, action) => {
+        const objArray = Object.entries(action.payload)
+          .map(([id, value]) => value.map((item) => ({ id, ...item })))
+          .reduce((acc, curr) => [...acc, ...curr], []);
+        return ({
+          ...state,
+          books: objArray,
+        });
+      })
+      .addCase(getBooksRequest.rejected, (state, action) => ({
+        ...state,
+        error: action.error.message,
+      }));
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const { addBook, removeBook, setError } = booksSlice.actions;
 
 export default booksSlice.reducer;
