@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Book from './Book';
 import InputBook from './InputBook';
 import { getBooksRequest } from '../redux/books/booksSlice';
+import profile from '../assets/profile.png';
 
 const Bookstore = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,13 @@ const Bookstore = () => {
     <>
       <header>
         <nav>
-          <h1>Bookstore</h1>
+          <h1>Bookstore CMS</h1>
           <ul>
             <li><a href="./">Home</a></li>
             <li><a href="./Categories">Categories</a></li>
           </ul>
         </nav>
-        <img className="profile" src="./profile.svg" alt="profile" />
+        <img className="profile" src={profile} alt="profile" />
       </header>
       <section className="books">
         {books.map((book) => (

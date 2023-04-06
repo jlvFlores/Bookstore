@@ -18,24 +18,34 @@ const Book = ({
         <h4>{category}</h4>
         <h2>{title}</h2>
         <h3>{author}</h3>
-        <div>
+        <div className="options">
           <button type="button" className="book-btn">Comments</button>
+          <span className="horizontal-line" />
           <button type="button" className="book-btn" onClick={handleClick}>Remove</button>
+          <span className="horizontal-line" />
           <button type="button" className="book-btn">Edit</button>
         </div>
       </div>
       <div className="book-completion">
-        <div className="percentage">
-          18%
-          <br />
-          Completed
+        <div className="middle-con">
+          <svg className="wheel">
+            <circle className="bg" cx="40" cy="40" r="35" />
+            <circle className="meter" cx="40" cy="40" r="35" />
+          </svg>
+          <div className="percentage-con">
+            <span className="percentage-text">18%</span>
+            <span>Completed</span>
+          </div>
+          <div className="horizontal-line" />
         </div>
-        <div className="chapter">
-          Current Chapter
+        <div className="chapter-con">
+          <div>
+            <span className="current-chapter">CURRENT CHAPTER</span>
+            <br />
+            <span className="chapter">Chapter: 4</span>
+          </div>
           <br />
-          chapter: 17
-          <br />
-          <button type="button">UPDATE PROGRESS</button>
+          <button type="button" className="blue-btn">UPDATE PROGRESS</button>
         </div>
       </div>
     </div>
